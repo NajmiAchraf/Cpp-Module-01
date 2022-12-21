@@ -1,8 +1,8 @@
 #include "Zombie.hpp"
 
 void run() {
-	Zombie	*horde = zombieHorde(N, "Horde");
 	int		N = 10;
+	Zombie	*horde = zombieHorde(N, "Horde");
 
 	for (int i = 0; i < N; i++) {
 		horde[i].announce();
