@@ -2,7 +2,7 @@
 #			INIT				#
 #*******************************#
 
-NAME = Unnecessary_violence
+NAME = Sed_is_for_losers
 
 NAME_UP  = $(shell echo $(NAME) | tr  '[:lower:]' '[:upper:]')
 
@@ -11,10 +11,7 @@ CPP = c++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRCS = \
-	main.cpp	\
-	Weapon.cpp	\
-	HumanA.cpp	\
-	HumanB.cpp	\
+	main.cpp
 
 CPL = 0
 
@@ -84,7 +81,7 @@ re : fclean all
 
 run : re
 	@echo "$(C_CYAN)[RUN ${NAME_UP} ... 🚀]$(C_RES)"
-	@./$(EXE_DIR)/$(NAME)
+	@./$(EXE_DIR)/$(NAME) test.txt 56 "'321654987'"
 	@echo "$(C_BLUE)[... ${NAME_UP} FINISHED!]$(C_RES)"
 
 .PHONY : all clean fclean re run

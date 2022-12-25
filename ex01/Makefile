@@ -15,13 +15,16 @@ SRCS = \
 	Zombie.cpp		\
 	zombieHorde.cpp
 
+CPL = 0
+
 #*******************************#
 #			FOLDERS				#
 #*******************************#
 
 OBJ_DIR = objects
 EXE_DIR = executables
-MKDIR = mkdir -p $(OBJ_DIR) $(EXE_DIR)
+DIRS = $(OBJ_DIR) $(EXE_DIR)
+MKDIR = mkdir -p $(DIRS)
 
 #*******************************#
 #			COLORS				#
@@ -43,41 +46,44 @@ C_RES = \033[0m
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
 $(OBJ_DIR)/%.o : %.cpp
+	@if [ $(CPL) -eq 0 ]; then \
+		echo -n "$(C_YELLOW)[COMPILING $(NAME_UP) ... ⚙️  $(C_RES)"; \
+		$(eval CPL = 1) \
+	fi
 	@$(CPP) $(CPPFLAGS) -c $< -o $@
 
 #*******************************#
 #			MAKING				#
 #*******************************#
 
-all : dir $(NAME)
+all : $(DIRS) $(NAME)
 
-dir :
-	@echo "$(C_YELLOW)[CREATING DIRECTORIES ...]$(C_RES)"
+$(DIRS) :
+	@echo -n "$(C_YELLOW)[CREATING DIRECTORIES ... 🗂  $(C_RES)"
 	@$(MKDIR)
-	@echo "$(C_GREEN)[DIRECTORIES CREATED!]$(C_RES)"
+	@echo "$(C_GREEN)... DIRECTORIES CREATED!]$(C_RES)"
 
 $(NAME) : $(OBJ)
-	@echo "$(C_YELLOW)[COMPILING $(NAME_UP) ...]$(C_RES)"
 	@$(CPP) $(CPPFLAGS) $(OBJ) -o $(EXE_DIR)/$(NAME)
-	@echo "$(C_GREEN)[${NAME_UP} COMPILED!]$(C_RES)"
+	@echo "$(C_GREEN)... ${NAME_UP} COMPILED!]$(C_RES)"
 
 clean :
-	@echo "$(C_MAGENTA)[REMOVING $(NAME_UP) OBJECTS ...]$(C_RES)"
+	@echo -n "$(C_MAGENTA)[REMOVING $(NAME_UP) OBJECTS ... 🧹$(C_RES)"
 	@rm -f $(OBJ)
 	@rm -rf $(OBJ_DIR)
-	@echo "$(C_RED)[${NAME_UP} OBJECTS REMOVED!]$(C_RES)"
+	@echo "$(C_RED)... ${NAME_UP} OBJECTS REMOVED!]$(C_RES)"
 
 fclean : clean
-	@echo "$(C_MAGENTA)[REMOVING $(NAME_UP) EXECUTABLES ...]$(C_RES)"
+	@echo -n "$(C_MAGENTA)[REMOVING $(NAME_UP) EXECUTABLES ... 🧹$(C_RES)"
 	@rm -f $(EXE_DIR)/$(NAME)
 	@rm -rf $(EXE_DIR)
-	@echo "$(C_RED)[${NAME_UP} EXECUTABLES REMOVED!]$(C_RES)"
+	@echo "$(C_RED)... ${NAME_UP} EXECUTABLES REMOVED!]$(C_RES)"
 
 re : fclean all
 
 run : re
-	@echo "$(C_CYAN)[RUN ${NAME_UP} ...]$(C_RES)"
+	@echo "$(C_CYAN)[RUN ${NAME_UP} ... 🚀]$(C_RES)"
 	@./$(EXE_DIR)/$(NAME)
-	@echo "$(C_BLUE)[${NAME_UP} FINISHED!]$(C_RES)"
+	@echo "$(C_BLUE)[... ${NAME_UP} FINISHED!]$(C_RES)"
 
-.PHONY : all clean fclean re run dir
+.PHONY : all clean fclean re run
