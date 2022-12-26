@@ -2,7 +2,7 @@
 #			INIT				#
 #*******************************#
 
-NAME = Moar_brainz!
+NAME = Harl_2.0
 
 NAME_UP = $(shell echo $(NAME) | tr  '[:lower:]' '[:upper:]')
 
@@ -11,9 +11,8 @@ CPP = c++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRCS = \
-	main.cpp		\
-	Zombie.cpp		\
-	zombieHorde.cpp
+	main.cpp	\
+	Harl.cpp	\
 
 CPL = 0
 
@@ -66,7 +65,7 @@ OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
 $(OBJ_DIR)/%.o : %.cpp
 	@if [ $(CPL) -eq 0 ]; then \
-		echo -n "$(C_YELLOW)➔ COMPILING $(NAME_UP) ... ⚙️ $(C_RES)"; \
+		$(T_COMP_S); \
 		$(eval CPL = 1) \
 	fi
 	@$(CPP) $(CPPFLAGS) -c $< -o $@
@@ -78,31 +77,31 @@ $(OBJ_DIR)/%.o : %.cpp
 all : $(DIRS) $(NAME)
 
 $(DIRS) :
-	@echo -n "$(C_YELLOW)➔ CREATING ${NAME_UP} DIRECTORIES ... 📂 $(C_RES)"
+	@$(T_DIR_S)
 	@$(MKDIR)
-	@echo "$(C_GREEN)... ${NAME_UP} DIRECTORIES CREATED ✔$(C_RES)"
+	@$(T_DIR_E)
 
 $(NAME) : $(OBJ)
 	@$(CPP) $(CPPFLAGS) $(OBJ) -o $(EXE_DIR)/$(NAME)
-	@echo "$(C_GREEN)... ${NAME_UP} COMPILED ✔$(C_RES)"
+	@$(T_COMP_E)
 
 clean :
-	@echo -n "$(C_MAGENTA)➔ REMOVING $(NAME_UP) OBJECTS ... 🗑️ $(C_RES)"
+	@$(T_O_RMV_S)
 	@rm -f $(OBJ)
 	@rm -rf $(OBJ_DIR)
-	@echo "$(C_RED)... ${NAME_UP} OBJECTS REMOVED ✔$(C_RES)"
+	@$(T_O_RMV_E)
 
 fclean : clean
-	@echo -n "$(C_MAGENTA)➔ REMOVING $(NAME_UP) EXECUTABLES ... 🗑️ $(C_RES)"
+	@$(T_E_RMV_S)
 	@rm -f $(EXE_DIR)/$(NAME)
 	@rm -rf $(EXE_DIR)
-	@echo "$(C_RED)... ${NAME_UP} EXECUTABLES REMOVED ✔$(C_RES)"
+	@$(T_E_RMV_E)
 
 re : fclean all
 
 run : re
-	@echo "$(C_CYAN)➔ RUN ${NAME_UP} ... 🚀$(C_RES)"
+	@$(T_RUN_S)
 	@./$(EXE_DIR)/$(NAME)
-	@echo "$(C_BLUE)... ${NAME_UP} FINISHED ✔$(C_RES)"
+	@$(T_RUN_E)
 
 .PHONY : all clean fclean re run

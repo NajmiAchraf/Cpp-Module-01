@@ -21,7 +21,7 @@ static void	error(std::string msg, std::string filename = "") {
 
 int	main (int ac , char *av[]) {
 	if (ac != 4 || av[2] == NULL || av[3] == NULL)
-		error("Wrong Arguments!");
+		error("Wrong Arguments");
 
 	std::string	filename	= av[1];
 	std::string str1		= av[2];
@@ -29,12 +29,12 @@ int	main (int ac , char *av[]) {
 
 	std::ifstream	infile(filename.data());
 	if (!infile.is_open())
-		error("Cannot Open File!", filename);
+		error("Cannot Open File ", filename);
 
 	std::ofstream	outfile(filename.append(".replace").data());
 	if (!outfile.is_open()) {
 		infile.close();
-		error("Cannot Open File!", filename.append(".replace"));
+		error("Cannot Open File ", filename.append(".replace"));
 	}
 	while (true) {
 		std::string	line;

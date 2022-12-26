@@ -4,7 +4,7 @@
 
 NAME = HI_THIS_IS_BRAIN
 
-NAME_UP  = $(shell echo $(NAME) | tr  '[:lower:]' '[:upper:]')
+NAME_UP = $(shell echo $(NAME) | tr  '[:lower:]' '[:upper:]')
 
 CPP = c++
 
@@ -38,6 +38,25 @@ C_CYAN = \033[1;36m
 C_RES = \033[0m
 
 #*******************************#
+#			TEXTS				#
+#*******************************#
+
+T_COMP_S = echo -n "$(C_YELLOW)➔ COMPILING $(NAME_UP) ... ⚙️ $(C_RES)"
+T_COMP_E = echo "$(C_GREEN)... ${NAME_UP} COMPILED ✔$(C_RES)"
+
+T_DIR_S = echo -n "$(C_YELLOW)➔ CREATING ${NAME_UP} DIRECTORIES ... 📂 $(C_RES)"
+T_DIR_E = echo "$(C_GREEN)... ${NAME_UP} DIRECTORIES CREATED ✔$(C_RES)"
+
+T_O_RMV_S = echo -n "$(C_MAGENTA)➔ REMOVING $(NAME_UP) OBJECTS ... 🗑️ $(C_RES)"
+T_O_RMV_E = echo "$(C_RED)... ${NAME_UP} OBJECTS REMOVED ✔$(C_RES)"
+
+T_E_RMV_S = echo -n "$(C_MAGENTA)➔ REMOVING $(NAME_UP) EXECUTABLES ... 🗑️ $(C_RES)"
+T_E_RMV_E = echo "$(C_RED)... ${NAME_UP} EXECUTABLES REMOVED ✔$(C_RES)"
+
+T_RUN_S = echo "$(C_CYAN)➔ RUN ${NAME_UP} ... 🚀$(C_RES)"
+T_RUN_E = echo "$(C_BLUE)... ${NAME_UP} FINISHED ✔$(C_RES)"
+
+#*******************************#
 #			MAKING OBJS			#
 #*******************************#
 
@@ -45,7 +64,7 @@ OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
 $(OBJ_DIR)/%.o : %.cpp
 	@if [ $(CPL) -eq 0 ]; then \
-		echo -n "$(C_YELLOW)[COMPILING $(NAME_UP) ... ⚙️  $(C_RES)"; \
+		echo -n "$(C_YELLOW)➔ COMPILING $(NAME_UP) ... ⚙️ $(C_RES)"; \
 		$(eval CPL = 1) \
 	fi
 	@$(CPP) $(CPPFLAGS) -c $< -o $@
@@ -57,31 +76,31 @@ $(OBJ_DIR)/%.o : %.cpp
 all : $(DIRS) $(NAME)
 
 $(DIRS) :
-	@echo -n "$(C_YELLOW)[CREATING DIRECTORIES ... 🗂  $(C_RES)"
+	@echo -n "$(C_YELLOW)➔ CREATING ${NAME_UP} DIRECTORIES ... 📂 $(C_RES)"
 	@$(MKDIR)
-	@echo "$(C_GREEN)... DIRECTORIES CREATED!]$(C_RES)"
+	@echo "$(C_GREEN)... ${NAME_UP} DIRECTORIES CREATED ✔$(C_RES)"
 
 $(NAME) : $(OBJ)
 	@$(CPP) $(CPPFLAGS) $(OBJ) -o $(EXE_DIR)/$(NAME)
-	@echo "$(C_GREEN)... ${NAME_UP} COMPILED!]$(C_RES)"
+	@echo "$(C_GREEN)... ${NAME_UP} COMPILED ✔$(C_RES)"
 
 clean :
-	@echo -n "$(C_MAGENTA)[REMOVING $(NAME_UP) OBJECTS ... 🧹$(C_RES)"
+	@echo -n "$(C_MAGENTA)➔ REMOVING $(NAME_UP) OBJECTS ... 🗑️ $(C_RES)"
 	@rm -f $(OBJ)
 	@rm -rf $(OBJ_DIR)
-	@echo "$(C_RED)... ${NAME_UP} OBJECTS REMOVED!]$(C_RES)"
+	@echo "$(C_RED)... ${NAME_UP} OBJECTS REMOVED ✔$(C_RES)"
 
 fclean : clean
-	@echo -n "$(C_MAGENTA)[REMOVING $(NAME_UP) EXECUTABLES ... 🧹$(C_RES)"
+	@echo -n "$(C_MAGENTA)➔ REMOVING $(NAME_UP) EXECUTABLES ... 🗑️ $(C_RES)"
 	@rm -f $(EXE_DIR)/$(NAME)
 	@rm -rf $(EXE_DIR)
-	@echo "$(C_RED)... ${NAME_UP} EXECUTABLES REMOVED!]$(C_RES)"
+	@echo "$(C_RED)... ${NAME_UP} EXECUTABLES REMOVED ✔$(C_RES)"
 
 re : fclean all
 
 run : re
-	@echo "$(C_CYAN)[RUN ${NAME_UP} ... 🚀]$(C_RES)"
+	@echo "$(C_CYAN)➔ RUN ${NAME_UP} ... 🚀$(C_RES)"
 	@./$(EXE_DIR)/$(NAME)
-	@echo "$(C_BLUE)[... ${NAME_UP} FINISHED!]$(C_RES)"
+	@echo "$(C_BLUE)... ${NAME_UP} FINISHED ✔$(C_RES)"
 
 .PHONY : all clean fclean re run
