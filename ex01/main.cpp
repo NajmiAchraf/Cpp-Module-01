@@ -12,6 +12,5 @@ void run() {
 
 int main(void) {
 	run();
-//	system("leaks Moar_brainz!");
 	return (0);
 }

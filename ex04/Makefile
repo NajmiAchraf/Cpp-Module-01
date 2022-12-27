@@ -9,6 +9,7 @@ NAME_UP = $(shell echo $(NAME) | tr  '[:lower:]' '[:upper:]')
 CPP = c++
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
+# CPPFLAGS += -g -fsanitize=address
 
 SRCS = \
 	main.cpp
