@@ -15,17 +15,11 @@ Harl::~Harl(void) {
 void	Harl::complain(std::string level) {
 	switch (Format(level)) {
 		case (DEBUG):
-			for (int i = 0; i < 4; i++)
-				(this->*ft_ptr[i])();
-			break;
+			(this->*ft_ptr[0])();
 		case (INFO):
-			for (int i = 1; i < 4; i++)
-				(this->*ft_ptr[i])();
-			break;
+			(this->*ft_ptr[1])();
 		case (WARNING):
-			for (int i = 2; i < 4; i++)
-				(this->*ft_ptr[i])();
-			break;
+			(this->*ft_ptr[2])();
 		case (ERROR):
 			(this->*ft_ptr[3])();
 			break;
