@@ -42,16 +42,16 @@ C_RES = \033[0m
 #			TEXTS				#
 #*******************************#
 
-T_COMP_S = "$(C_YELLOW)➔ COMPILING $(NAME_UP) ... ⚙️ $(C_RES)"
+T_COMP_S = "$(C_YELLOW)➔ COMPILING $(NAME_UP) ... ⚙️$(C_RES)"
 T_COMP_E = "$(C_GREEN)... ${NAME_UP} COMPILED ✔$(C_RES)\n"
 
 T_DIR_S = "$(C_YELLOW)➔ CREATING ${NAME_UP} DIRECTORIES ... 📂 $(C_RES)"
 T_DIR_E = "$(C_GREEN)... ${NAME_UP} DIRECTORIES CREATED ✔$(C_RES)\n"
 
-T_O_RMV_S = "$(C_MAGENTA)➔ REMOVING $(NAME_UP) OBJECTS ... 🗑️ $(C_RES)"
+T_O_RMV_S = "$(C_MAGENTA)➔ REMOVING $(NAME_UP) OBJECTS ... 🗑 $(C_RES)"
 T_O_RMV_E = "$(C_RED)... ${NAME_UP} OBJECTS REMOVED ✔$(C_RES)\n"
 
-T_E_RMV_S = "$(C_MAGENTA)➔ REMOVING $(NAME_UP) EXECUTABLES ... 🗑️ $(C_RES)"
+T_E_RMV_S = "$(C_MAGENTA)➔ REMOVING $(NAME_UP) EXECUTABLES ... 🗑️$(C_RES)"
 T_E_RMV_E = "$(C_RED)... ${NAME_UP} EXECUTABLES REMOVED ✔$(C_RES)\n"
 
 T_RUN_S = "$(C_CYAN)➔ RUN ${NAME_UP} ... 🚀$(C_RES)\n"
