@@ -7,14 +7,14 @@ class HumanB {
 
 public:
 
-	std::string	const	&getType();
+	std::string const	&getType(void);
 	void				setType(std::string type);
 	void				setWeapon(Weapon &weapon);
 
 	HumanB(std::string name);
-	~HumanB();
+	~HumanB(void);
 
-	void	attack();
+	void	attack(void);
 
 private:
 

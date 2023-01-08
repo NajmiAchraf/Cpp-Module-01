@@ -1,14 +1,6 @@
 #include <iostream>
 #include <cstdlib>
 
-enum levelFormat {
-	DEBUG,
-	INFO,
-	WARNING,
-	ERROR,
-	EXTRA
-};
-
 class	Harl {
 
 public:
@@ -17,8 +9,6 @@ public:
 	~Harl(void);
 
 	void		complain(std::string level);
-
-	static levelFormat	Format(std::string level);
 
 private:
 

@@ -13,34 +13,15 @@ Harl::~Harl(void) {
 }
 
 void	Harl::complain(std::string level) {
-	switch (Format(level)) {
-		case (DEBUG):
-			(this->*ft_ptr[0])();
-			break;
-		case (INFO):
-			(this->*ft_ptr[1])();
-			break;
-		case (WARNING):
-			(this->*ft_ptr[2])();
-			break;
-		case (ERROR):
-			(this->*ft_ptr[3])();
-			break;
-		default:
-			std::cout << "Invalid level" << std::endl;
-	}
-}
+	std::string	levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-levelFormat	Harl::Format(std::string level) {
-	if (level == "DEBUG")
-		return (DEBUG);
-	else if (level == "INFO")
-		return (INFO);
-	else if (level == "WARNING")
-		return (WARNING);
-	else if (level == "ERROR")
-		return (ERROR);
-	return (EXTRA);
+	for (int i = 0; i < 4; i++) {
+		if (levels[i] == level) {
+			(this->*ft_ptr[i])();
+			break;
+		}
+	}
+	std::cout << "Invalid level" << std::endl;
 }
 
 void	Harl::debug(void) {

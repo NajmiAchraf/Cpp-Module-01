@@ -1,7 +1,7 @@
 
 #include "HumanB.hpp"
 
-std::string const	&HumanB::getType() {
+std::string const	&HumanB::getType(void) {
 	return (this->weapon->getType());
 }
 
@@ -19,11 +19,11 @@ HumanB::HumanB(std::string name) {
 	this->weapon = NULL;
 }
 
-HumanB::~HumanB() {
+HumanB::~HumanB(void) {
 	std::cout << "Destructor called" << std::endl;
 }
 
-void	HumanB::attack() {
+void	HumanB::attack(void) {
 	if (this->weapon)
 		std::cout << this->name << " attacks with his " << this->weapon->getType() << std::endl;
 	else

@@ -1,6 +1,6 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie() : _name("unnamed") {
+Zombie::Zombie(void) : _name("unnamed") {
 	std::cout << "Constructor called" << std::endl;
 }
 

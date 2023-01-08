@@ -23,22 +23,21 @@ void	Harl::complain(std::string level) {
 		case (ERROR):
 			(this->*ft_ptr[3])();
 			break;
-		case (EXTRA):
-			return;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
 }
 
 levelFormat	Harl::Format(std::string level) {
-	if (level == "DEBUG")
-		return (DEBUG);
-	else if (level == "INFO")
-		return (INFO);
-	else if (level == "WARNING")
-		return (WARNING);
-	else if (level == "ERROR")
-		return (ERROR);
-	std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-	return (EXTRA);
+	std::string	levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	levelFormat lf;
+
+	for (int i = 0; i < 4; i++) {
+		if (levels[i] == level) {
+			return (lf[i]);
+		}
+	}
+	return (lf[4]);
 }
 
 void	Harl::debug(void) {

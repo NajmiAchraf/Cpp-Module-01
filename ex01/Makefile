@@ -103,7 +103,7 @@ re : fclean all
 
 run : re
 	@printf $(T_RUN_S)
-	@./$(EXE_DIR)/$(NAME) "DEBUG"
+	@./$(EXE_DIR)/$(NAME)
 	@printf $(T_RUN_E)
 
 .PHONY : all clean fclean re run

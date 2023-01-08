@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
 
 static std::string	replacing(std::string line, std::string str1, std::string str2) {
 	std::string::size_type	start = 0;
