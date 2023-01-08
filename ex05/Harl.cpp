@@ -18,7 +18,7 @@ void	Harl::complain(std::string level) {
 	for (int i = 0; i < 4; i++) {
 		if (levels[i] == level) {
 			(this->*ft_ptr[i])();
-			break;
+			return;
 		}
 	}
 	std::cout << "Invalid level" << std::endl;

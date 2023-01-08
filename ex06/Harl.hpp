@@ -18,7 +18,7 @@ public:
 
 	void		complain(std::string level);
 
-	static levelFormat	Format(std::string level);
+	static int	Format(std::string level);
 
 private:
 

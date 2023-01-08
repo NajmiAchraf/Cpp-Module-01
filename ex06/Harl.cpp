@@ -28,16 +28,14 @@ void	Harl::complain(std::string level) {
 	}
 }
 
-levelFormat	Harl::Format(std::string level) {
+int	Harl::Format(std::string level) {
 	std::string	levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	levelFormat lf;
 
 	for (int i = 0; i < 4; i++) {
-		if (levels[i] == level) {
-			return (lf[i]);
-		}
+		if (levels[i] == level)
+			return (i);
 	}
-	return (lf[4]);
+	return (4);
 }
 
 void	Harl::debug(void) {
