@@ -1,4 +1,3 @@
-
 #include "HumanB.hpp"
 
 std::string const	&HumanB::getType(void) {

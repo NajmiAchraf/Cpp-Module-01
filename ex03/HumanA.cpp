@@ -1,4 +1,3 @@
-
 #include "HumanA.hpp"
 
 std::string const	&HumanA::getWeaponType(void) {
