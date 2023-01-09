@@ -36,7 +36,7 @@ int	Harl::Format(std::string level) {
 		if (levels[i] == level)
 			return (i);
 	}
-	return (4);
+	return (-1);
 }
 
 void	Harl::debug(void) {

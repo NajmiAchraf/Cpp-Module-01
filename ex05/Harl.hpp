@@ -1,5 +1,8 @@
-#include <iostream>
-#include <cstdlib>
+#ifndef HARL_HPP
+# define HARL_HPP
+
+# include <iostream>
+# include <cstdlib>
 
 class	Harl {
 
@@ -20,3 +23,5 @@ private:
 	void	error(void);
 
 };
+
+#endif

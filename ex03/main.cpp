@@ -1,7 +1,7 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-void	human_a() {
+static void	human_a(void) {
 	Weapon	club = Weapon("crude spiked club");
 	HumanA	bob("Bob", club);
 	bob.attack();
@@ -9,7 +9,7 @@ void	human_a() {
 	bob.attack();
 }
 
-void	human_b() {
+static void	human_b(void) {
 	Weapon	club = Weapon("crude spiked club");
 	HumanB	jim("Jim");
 	jim.attack();
@@ -19,9 +19,9 @@ void	human_b() {
 	jim.attack();
 }
 
-int main() {
+int main(void) {
 	human_a();
 	human_b();
 //	system("leaks Unnecessary_violence");
-	return 0;
+	return (0);
 }

@@ -1,13 +1,13 @@
-#include <iostream>
-#include <cstdlib>
+#ifndef HARL_HPP
+# define HARL_HPP
 
-enum levelFormat {
-	DEBUG,
-	INFO,
-	WARNING,
-	ERROR,
-	EXTRA
-};
+# include <iostream>
+# include <cstdlib>
+
+# define DEBUG 0
+# define INFO 1
+# define WARNING 2
+# define ERROR 3
 
 class	Harl {
 
@@ -16,9 +16,9 @@ public:
 	Harl(void);
 	~Harl(void);
 
-	void		complain(std::string level);
+	void	complain(std::string level);
 
-	static int	Format(std::string level);
+	int		Format(std::string level);
 
 private:
 
@@ -30,3 +30,5 @@ private:
 	void	error(void);
 
 };
+
+#endif
